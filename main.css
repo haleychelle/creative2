@@ -1,0 +1,39 @@
+html {
+  background-color:#6E7E75;
+}
+body {
+  font-family: courier new;
+  color:#FFEBCD;
+  background-color:#6E7E75;
+}
+h1 {
+  color:#FFEBCD;
+  text-align: center;
+  text-shadow: 3px 2px black;
+  font-family: courier new;
+  font-weight:bold;
+  font-size: 300%;
+}
+.myText {
+  background-color:#6E7E75;
+  color:#FFEBCD;
+  font-size: 150%;
+}
+ul {
+  text-align: center;
+  font-size: 125%;
+  text-shadow: 3px 2px black;
+  list-style-type: none;
+}
+p {
+  text-align: center;
+  font-size: 150%;
+  text-shadow: 3px 2px black;
+  text-decoration: underline;
+}
+#title {
+  text-align: center;
+  font-size: 150%;
+  text-shadow: 3px 2px black;
+  text-decoration: underline;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+      #map {
+        height: 700px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h1>Dinosaur Takeover</h1>
+    <input type="text" style="width: 100%" class="myText"/>
+    <div id="map"></div>
+    <div>
+      <ul>
+	<li id="title"> Dinosaurs
+	<li>Stegosaurus
+	<li>T-Rex
+	<li>Pterodactyl
+	<li>Triceratops
+	<li>Hypsilophodon
+      </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+      var clickCnt = 0;
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+	var img2 = "ptero.png";
+	var image = "trex.png";
+       // var marker = new google.maps.Marker({
+         // position: uluru,
+         // map: map,
+	 // icon: image
+       // });
+        map.setMapTypeId('satellite');
+        map.addListener('click',function(e) {
+	  placeMarker(e.latLng, map);
+	  clickCnt++;
+	});
+
+	function placeMarker(position, map) {
+	  if(clickCnt < 5) {
+	    var marker = new google.maps.Marker({
+	      position: position,
+	      map: map,
+	      icon: "stego.png"
+	    });
+	  }
+	  if(clickCnt >= 5 && clickCnt < 15) {
+	    var marker = new google.maps.Marker({
+	      position: position,
+	      map: map,
+	      icon: "ptero.png"
+	    });
+	  }
+	  if(clickCnt >= 15 && clickCnt < 30) {
+	    var marker = new google.maps.Marker({
+	      position: position,
+	      map: map,
+	      icon: "trex.png"
+	    });
+	  }
+	  if(clickCnt >= 30 && clickCnt< 34) {
+	    var marker = new google.maps.Marker({
+  	      position: position,
+	      map:map,
+	      icon:"tri.png"
+	    });
+	  }
+	  if(clickCnt >= 34) {
+            var marker = new google.maps.Marker({
+              position: position,
+              map:map,
+              icon:"hypsi.png"
+            });
+          }
+	  map.panTo(position);
+	}
+      }
+
+      var text = "Warning! Dinosaurs are about to take over the earth. But you may join them if you wish. Click on the map to help them out. Otherwise, run for your life!";
+      var charCnt = text.length;
+      var currentLetterCnt = 0;
+      var speed = 120;
+      var $input = $(".myText");
+      
+      function writeChar() {
+        var currText = $input.val();
+	var currLetter = text.charAt(currentLetterCnt);
+	currentLetterCnt++;
+	$input.val(currText + currLetter);
+	if(currentLetterCnt == charCnt) {
+	  clearInterval(timer);
+	}
+      }
+      var timer = setInterval(writeChar, speed);
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTgXQzEdll4uKrheSZrZeasWB9ofNasKk&callback=initMap">
+    </script>
+  </body>
+</html>
